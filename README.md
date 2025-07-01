@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Planora - Project Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 A powerful task and project management application built with **React, Express, and MongoDB**.
 
-## Available Scripts
+## 🔗 Live Demo & Hosted Link
 
-In the project directory, you can run:
+🎥 **Demo Video:** [Planora Demo](https://your-demo-video-link.com)  
+🌍 **Hosted Link:** [Planora Live](https://your-hosted-link.com)
 
-### `npm start`
+📧 Email: guest@planora.com  
+🔒 Password: guest123
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🔧 Tech Stack
 
-### `npm test`
+- **Frontend:** React, React Router, Axios, Chart.js.
+- **Backend:** Express.js, Node.js, Mongoose.
+- **Database:** MongoDB.
+- **Hosting:** Vercel for frontend & backend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📌 Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🔹 Frontend (React)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ **Login & Signup**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Secure authentication with **JWT**.
+- Stores token in `localStorage` upon login.
+- Redirects unauthorized users to the login page.
 
-### `npm run eject`
+✅ **Task Management**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Create tasks with fields like **project, team, owners, tags, and status**.
+- Filter tasks by **owner, project, team, tags, and status**.
+- URL-based filtering (`/tasks?owner=John&team=Development`).
+- Task sorting by **priority and completion time**.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+✅ **Views**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Project View:** Displays tasks grouped by projects.
+- **Team View:** Lists tasks by teams.
+- **Task Details:** Shows full task info with status updates.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+✅ **Reports & Visualization**
 
-## Learn More
+- Track work done last week with **bar charts**.
+- See total pending work **summed in charts**.
+- View **tasks closed by owner, team, or project**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🔹 Backend (Express + MongoDB)
 
-### Code Splitting
+✅ **User Authentication**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Secure **JWT-based authentication**.
+- **Sign up** (`POST /user/signup`) and **Login** (`POST /user/login`).
+- **Retrieve user details** (`GET /user/me`).
 
-### Analyzing the Bundle Size
+✅ **Task API**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Create Task:** (`POST /tasks`)
+- **Filter Tasks:** (`GET /tasks?team=development`)
+- **Update Task:** (`POST /tasks/:id`)
+- **Delete Task:** (`DELETE /tasks/:id`)
 
-### Making a Progressive Web App
+✅ **Project & Team Management**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Create Projects:** (`POST /projects`)
+- **Fetch All Projects:** (`GET /projects`)
+- **Create Teams:** (`POST /teams`)
+- **Retrieve Team List:** (`GET /teams`)
 
-### Advanced Configuration
+✅ **Tag Management**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Create Tags:** (`POST /tags`)
+- **Fetch Tags:** (`GET /tags`)
 
-### Deployment
+✅ **Reporting System**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Completed tasks last week** (`GET /report/last-week`)
+- **Total days of pending work** (`GET /report/pending`)
+- **Tasks closed by team/owner/project** (`GET /report/closed-tasks`)
