@@ -1,6 +1,6 @@
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoginAsync } from "../features/User/userSlice";
 
@@ -8,9 +8,8 @@ function UserLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { status } = useSelector((state) => state.users);
-  
+
   const handleCreate = () => {
     if (!email || !password) {
       alert("Please Enter Email and Password");
