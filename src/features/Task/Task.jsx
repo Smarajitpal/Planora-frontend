@@ -16,20 +16,24 @@ import { addTaskAsync, fetchTasks } from "./taskSlice";
 import Modal from "react-bootstrap/Modal";
 import { fetchTeams } from "../Team/teamSlice";
 import { fetchUser } from "../User/userSlice";
+import { fetchProjects } from "../Project/projectSlice";
 
 function Tasks() {
   const [newTask, setNewTask] = useState(false);
   const { tasks, status, error } = useSelector((state) => state.tasks);
+
   const { teams } = useSelector((state) => state.teams);
   const { users } = useSelector((state) => state.users);
+  const { projects } = useSelector((state) => state.projects);
   const { projectId } = useParams();
   const dispatch = useDispatch();
   const location = useLocation();
+  const sProject = projects?.find((p) => p._id === projectId);
   const navigate = useNavigate();
   const [task, setTask] = useState("");
   const [project, setProject] = useState({
-    name: location?.state?.name,
-    id: location?.state?._id,
+    name: sProject?.name,
+    id: sProject?._id,
   });
   const [team, setTeam] = useState("");
   const [owners, setOwners] = useState([]);
@@ -90,6 +94,7 @@ function Tasks() {
     );
     dispatch(fetchTeams());
     dispatch(fetchUser());
+    dispatch(fetchProjects());
   }, [dispatch, projectId, filterTeam, filterOwner, filterStatus]);
   return (
     <div className="container mt-5">
@@ -97,7 +102,7 @@ function Tasks() {
         <Nav />
         <div className="col-md-10">
           <div className="d-flex justify-content-between mt-5">
-            <h1>{location?.state?.name}</h1>
+            <h1>{sProject?.name}</h1>
             <button
               className="btn btn-primary my-2"
               onClick={() => setNewTask(!newTask)}
@@ -233,7 +238,7 @@ function Tasks() {
               </div>
             ) : (
               <h4 className="mt-5 text-danger">
-                No tasks available for "{location?.state?.name}"
+                No tasks available for "{sProject?.name}"
               </h4>
             )}
           </div>
