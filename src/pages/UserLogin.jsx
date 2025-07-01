@@ -19,9 +19,6 @@ function UserLogin() {
       setEmail("");
       setPassword("");
     }
-    setTimeout(() => {
-      navigate("/");
-    }, 1000);
   };
   return (
     <div className="modal show" style={{ display: "block" }}>
