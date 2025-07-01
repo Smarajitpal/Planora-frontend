@@ -5,7 +5,7 @@
 ## 🔗 Live Demo & Hosted Link
 
 🎥 **Demo Video:** [Planora Demo](https://your-demo-video-link.com)  
-🌍 **Hosted Link:** [Planora Live](https://your-hosted-link.com)
+🌍 **Hosted Link:** [Planora Live](https://planora-frontend.vercel.app/)
 
 📧 Email: guest@planora.com  
 🔒 Password: guest123
