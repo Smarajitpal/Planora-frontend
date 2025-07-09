@@ -16,14 +16,24 @@ function UserLogin() {
     } else {
       const loginData = { email, password };
       dispatch(userLoginAsync(loginData));
-      if (error === "Request failed with status code 401") {
-        setPassword("");
-      } else {
-        setEmail("");
-        setPassword("");
-      }
     }
   };
+  useEffect(() => {
+    if (status === "success") {
+      setEmail("");
+      setPassword("");
+    }
+
+    if (status === "error" && error === "Request failed with status code 401") {
+      setPassword("");
+    }
+
+    if (status === "error" && error === "Request failed with status code 404") {
+      setEmail("");
+      setPassword("");
+    }
+  }, [status, error]);
+
   return (
     <div className="modal show" style={{ display: "block" }}>
       <Modal.Dialog centered>
