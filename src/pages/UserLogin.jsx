@@ -16,8 +16,12 @@ function UserLogin() {
     } else {
       const loginData = { email, password };
       dispatch(userLoginAsync(loginData));
-      setEmail("");
-      setPassword("");
+      if (error === "Request failed with status code 401") {
+        setPassword("");
+      } else {
+        setEmail("");
+        setPassword("");
+      }
     }
   };
   return (
