@@ -59,7 +59,7 @@ function UserLogin() {
 
             {status === "error" &&
               error === "Request failed with status code 401" && (
-                <p className="text-danger">Incorrect Email or Password</p>
+                <p className="text-danger">Incorrect Password</p>
               )}
 
             {status === "error" &&
