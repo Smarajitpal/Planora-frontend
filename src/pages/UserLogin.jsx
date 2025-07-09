@@ -8,7 +8,7 @@ function UserLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.users);
+  const { status, error } = useSelector((state) => state.users);
 
   const handleCreate = () => {
     if (!email || !password) {
@@ -51,12 +51,23 @@ function UserLogin() {
             <p>
               Don't have an account? <Link to="/userSignup">Register</Link>
             </p>
-            {status === "error" && (
-              <p className="text-danger">User do not exist. Please Register</p>
-            )}
             {status === "success" && (
-              <p className="text-success">Login Successful</p>
+              <p className="text-success">
+                Login Successful <Link to="/">Back to Dashboard</Link>
+              </p>
             )}
+
+            {status === "error" &&
+              error === "Request failed with status code 401" && (
+                <p className="text-danger">Incorrect Email or Password</p>
+              )}
+
+            {status === "error" &&
+              error === "Request failed with status code 404" && (
+                <p className="text-danger">
+                  User does not exist. Please register
+                </p>
+              )}
           </div>
         </Modal.Body>
       </Modal.Dialog>
